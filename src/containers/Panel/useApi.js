@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import api from '../../api';
 import usePanelStore from '../../store';
@@ -34,7 +34,7 @@ const useApi = (inputText, panelNumber) => {
                     console.error('error occured on fetching', err)
                 })
         }
-    }, [inputText])
+    }, [inputText, panelNumber, setPanels])
 
     // return { isError, data, isLoading };
 }

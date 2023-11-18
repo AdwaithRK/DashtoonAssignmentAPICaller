@@ -22,8 +22,8 @@ const Panel = ({ panelNumber }) => {
         }
     }, [data])
 
-    const image = useMemo(() => <img alt="try" ref={inputRef} className={styles.img} />, []);
-    const loading = useMemo(() => <Loader />);
+    const image = useMemo(() => <img alt="try" ref={inputRef} className={styles.img} />, [inputRef]);
+    const loading = useMemo(() => <Loader />, []);
 
     const getComp = useCallback(() => {
         if (isLoading) {
@@ -32,7 +32,7 @@ const Panel = ({ panelNumber }) => {
             return image;
         }
         return <PanelComp handleClick={(value) => setInputText(value)} isError={isError} isDisabled={isLoading || !!inputText} />;
-    }, [isLoading, isError, data])
+    }, [isLoading, isError, data, image, loading, inputText])
 
     return (
         <Box className={styles.container}>
