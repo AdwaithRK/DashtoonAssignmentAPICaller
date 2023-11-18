@@ -1,0 +1,11 @@
+.container {
+    height: 90vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    padding: 16px;
+    justify-self: center;
+}

@@ -1,0 +1,19 @@
+.container {
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
+.btn {
+    align-self: center;
+    display: flex;
+}
+
+.gridContainer {
+    padding-left: 56px;
+}
+
+.txtField > div {
+    border-radius: 50px;
+}
