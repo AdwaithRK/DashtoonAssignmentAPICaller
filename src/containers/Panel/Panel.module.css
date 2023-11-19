@@ -1,11 +1,17 @@
 .container {
     height: 90vh;
-    align-items: center;
     display: flex;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .img {
     padding: 16px;
     justify-self: center;
+}
+
+.loader {
+    align-self: center;
+    margin-right: auto;
+    margin-left: auto;
 }

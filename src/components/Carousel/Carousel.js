@@ -10,9 +10,9 @@ const Carousel = ({ children, selectedIndex, initialLimit, finalLimit, prevCallb
         <Box>
             {children[selectedIndex]}
             <Box className={styles.btnGrp}>
-                {!isFirstSlide && <Button variant='outlined' onClick={prevCallback}>Prev</Button>}
-                <div className={isFirstSlide || isLastSlide ? styles.initial : styles.text}>{`${selectedIndex + 1} / ${finalLimit + 1}`}</div>
-                {!isLastSlide && <Button variant='outlined' className={styles.nxt} onClick={nextCallback}>Next</Button>}
+                <Button variant='outlined' onClick={prevCallback} disabled={isFirstSlide}>Prev</Button>
+                <div className={styles.text}>{`${selectedIndex + 1} / ${finalLimit + 1}`}</div>
+                <Button variant='outlined' className={styles.nxt} onClick={nextCallback} disabled={isLastSlide}>Next</Button>
             </Box>
         </Box>
     );
