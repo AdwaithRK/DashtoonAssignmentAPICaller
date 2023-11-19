@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment, useCallback } from 'react';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -10,16 +10,23 @@ const INSTRUCTIONS = ['Input Your Prompt: Write a detailed description of the im
 
 const Panel = ({ handleClick, isError, isDisabled }) => {
     const [value, setValue] = useState('');
+
+    const keyDownHandler = useCallback((e) => {
+        if(e.code === "Enter") {
+            handleClick(value);
+        }
+    }, [handleClick, value])
+
     return (
         <Box className={styles.container}>
             <div className={styles.instructions}>
                 <ul>
-                    {INSTRUCTIONS.map((inst) => (<><li>{inst}</li><br /></>))}
+                    {INSTRUCTIONS.map((inst) => (<Fragment key={inst}><li>{inst}</li><br /></Fragment>))}
                 </ul>
             </div>
             <Grid container spacing={2} direction="row" className={styles.gridContainer}>
                 <Grid item xs={6}>
-                    <TextField fullWidth value={value} onChange={(e) => setValue(e.target.value)} variant='outlined' className={styles.txtField} placeholder="Enter your prompt" />
+                    <TextField fullWidth value={value} onChange={(e) => setValue(e.target.value)} variant='outlined' className={styles.txtField} placeholder="Enter your prompt" onKeyDown={keyDownHandler} />
                 </Grid>
                 <Grid item xs={1} className={styles.btn}>
                     <Button variant="contained" color={isError ? "error" : "primary"} onClick={() => handleClick(value)} disabled={isDisabled}>{isError ? "Try Again" : "Generate"}</Button>
